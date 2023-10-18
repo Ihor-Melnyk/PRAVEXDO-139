@@ -710,3 +710,16 @@ function setControlLineAndTime1() {
     changeControlPropertiesShow("Time1");
   }
 }
+
+function onTaskExecuteTaskReg(routeStage) {
+  if (routeStage.executionResult != "rejected") {
+    if (CurrentDocument.isDraft) {
+      throw "Прохання зафіксувати версію документа";
+    } else {
+      var Registr = EdocsApi.getAttributeValue("RegState");
+      if (Registr.value != "Зареєстрований") {
+        throw "Спочатку зареєструйте документ, а потім виконуйте завдання!";
+      }
+    }
+  }
+}

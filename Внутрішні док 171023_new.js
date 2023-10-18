@@ -693,7 +693,7 @@ function setControlReg() {
 }
 
 function onTaskExecuteSendEmail2(routeStage) {
-  if (routeStage.executionResult != "executed") {
+  if (routeStage.executionResult == "executed") {
     saveJson();
   }
 }
